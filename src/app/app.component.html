@@ -1,14 +1,13 @@
 <h1>Hi!</h1>
 <button
-  (click)="toggle = !toggle">
-  Toggle
+  (click)="toggle = !toggle">Toggle
+</button>
+<button
+  (click)="toggle = 'default'">Set default
 </button>
 
-<!--<p *ngIf="toggle" class="red">Lorem ipsum dolor sit amet.</p>-->
-<!--<p *ngIf="!toggle" class="blue">Lorem ipsum dolor sit amet.</p>-->
-
-<p *ngIf="toggle; else blueP" class="red">Lorem ipsum dolor sit amet.</p>
-<ng-template #blueP>
-  <p *ngIf="!toggle" class="blue">Lorem ipsum dolor sit amet.</p>
-</ng-template>
-
+<div [ngSwitch]="toggle">
+  <p *ngSwitchCase="true" class="red">Lorem ipsum dolor.</p>
+  <p *ngSwitchCase="false" class="blue">Lorem ipsum.</p>
+  <p *ngSwitchDefault>Lorem ipsum dolor sit.</p>
+</div>
