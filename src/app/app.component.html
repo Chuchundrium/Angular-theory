@@ -1,13 +1,12 @@
 <h1>Hi!</h1>
 <hr>
-<!--<input-->
-<!--  type="text"-->
-<!--  [value]="title"-->
-<!--  (input)="onInput($event)"-->
-<!--/>-->
-<input
-  type="text"
-[(ngModel)] = "title"
-/>
-<p>{{title}}</p>
+<button (click)="backgroundToggle = !backgroundToggle">Toggle</button>
+<div [ngStyle]="{
+  width: '200px',
+  height:  '200px',
+  borderRadius: '5px',
+  border: '1px solid black',
+  background: backgroundToggle ? 'red' : 'blue'
+  }">
+</div>
 <hr>
