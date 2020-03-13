@@ -1,13 +1,22 @@
 <h1>Hi!</h1>
-<button
-  (click)="toggle = !toggle">Toggle
-</button>
-<button
-  (click)="toggle = 'default'">Set default
-</button>
+<hr>
 
-<div [ngSwitch]="toggle">
-  <p *ngSwitchCase="true" class="red">Lorem ipsum dolor.</p>
-  <p *ngSwitchCase="false" class="blue">Lorem ipsum.</p>
-  <p *ngSwitchDefault>Lorem ipsum dolor sit.</p>
-</div>
+<ul>
+  <li *ngFor="let num of arr; let idx = index">
+    {{idx + 1}} <strong>{{num}}</strong>
+  </li>
+</ul>
+<hr>
+<ul style="list-style: none">
+  <li *ngFor="let post of objs">
+    <p>{{post.title}}<b> {{post.author}}</b></p>
+    <ul>
+      <li *ngFor="let comment of post.comments">
+        <div>
+          <small>{{comment.name}}</small>
+          <p>{{comment.text}}</p>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
