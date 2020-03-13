@@ -7,6 +7,7 @@
   <app-post
     *ngFor="let p of posts"
     [post]="p"
+    (postOnRemove)="removePost($event)"
   >
     <div #info>
       <small *ngIf="p.text.length > 10; else short">This post is long</small>

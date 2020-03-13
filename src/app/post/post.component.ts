@@ -1,4 +1,15 @@
-import {Component, ContentChild, ElementRef, Input, OnInit} from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChild,
+  DoCheck,
+  ElementRef, EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit, Output,
+  SimpleChanges
+} from '@angular/core';
 import {Post} from '../app.component';
 
 
@@ -7,14 +18,35 @@ import {Post} from '../app.component';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
-  @Input() post: Post;
-  @ContentChild('info', {static: true}) infoRef: ElementRef;
-  constructor() { }
+export class PostComponent implements
+  OnInit, OnChanges, DoCheck, AfterContentInit, OnDestroy {
 
-  ngOnInit(): void {
-    console.log('Look Here !!!');
-    console.log(this.infoRef.nativeElement);
+  @Input() post: Post;
+  @Output() postOnRemove = new EventEmitter<number>();
+  @ContentChild('info', {static: true}) infoRef: ElementRef;
+  constructor() {
+    console.log('!!! constructor !!!');
   }
 
+  ngOnInit(): void {
+    // console.log('Look Here !!!');
+    // console.log(this.infoRef.nativeElement);
+    console.log('ngOnInit');
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges', changes);
+  }
+  ngDoCheck(): void {
+    console.log('ngDoCheck');
+  }
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit');
+  }
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
+  }
+
+  removePost() {
+    this.postOnRemove.emit(this.post.id);
+  }
 }
