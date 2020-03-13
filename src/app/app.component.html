@@ -1,4 +1,19 @@
 <div class="container">
   <h1>Angular Directives</h1>
-  <p appStyle>Lorem ipsum dolor sit amet.</p>
+  <p
+    appStyle = "#d64161"
+    fontWeight = "bold"
+    [dStyles] = "{border: '2px solid #6b5b95', fontWeight: 'bold', borderRadius: '10px'}"
+  >Lorem ipsum dolor sit amet.</p>
+  <p
+    appStyle = "#6b5b95"
+    fontWeight = "bold"
+    [dStyles] = "{border: '2px solid #d64161', fontWeight: 'bold', borderRadius: '30px'}"
+  >Lorem ipsum dolor sit amet.</p>
 </div>
+
+<!--  appStyle="red" -->
+<!--    is equivalent to-->
+<!--  [appStyle]="'red'"-->
+<!--    but only string-->
+<!--so, if parameter is String, binding is nor necessary-->
