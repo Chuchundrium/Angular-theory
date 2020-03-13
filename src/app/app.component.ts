@@ -19,4 +19,8 @@ export class AppComponent {
     { title: 'kukuruku-ku', text: 'text 3', id: 3 },
   ];
 
+  updatePosts(post: Post) {
+    this.posts.unshift(post);
+    console.log('Post', post);
+  }
 }
