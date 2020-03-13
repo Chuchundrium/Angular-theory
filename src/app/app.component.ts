@@ -6,14 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Dynamic title';
-  inputValue = '';
+  title = 'Initial title';
 
-  onInput(event: KeyboardEvent) {
-    this.inputValue = (event.target as HTMLInputElement).value;
-  }
-
-  onBlur(str: string) {
-    this.inputValue = str;
+  onInput(event: any) {
+    this.title = event.target.value;
   }
 }
