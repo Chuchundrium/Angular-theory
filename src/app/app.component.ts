@@ -6,18 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  e: number = Math.E;
-  str = 'hi, chucha';
-  date: Date = new Date();
-  float = 0.42;
-  obj = {
-    a: 1,
-    b: {
-      c: 22,
-      d: {
-        e: 333,
-        f: 444
-      }
-    }
-  }
+
 }
