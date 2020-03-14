@@ -1,12 +1,10 @@
 <div class="container">
   <h1>Angular Pipes</h1>
   <hr>
-  <p>{{ str | uppercase }}</p>
+  <p>{{ date | date }}</p>
   <hr>
-  <p>{{ str | uppercase | lowercase }}</p>
+  <p>{{ date | date:'fullDate' }}</p>
   <hr>
-  <p>{{ str | titlecase }}</p>
-  <hr>
-  <p>{{ str | slice:3:-2 }}</p>
+  <p>{{ date | date:'dd MMMM yyyy, HH:mm' }}</p>
 </div>
 
