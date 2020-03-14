@@ -42,7 +42,7 @@
         <select formControlName="country">
           <option value="il">Israel</option>
           <option value="ca">Canada</option>
-          <option value="aus">Australia</option>
+          <option value="au">Australia</option>
         </select>
       </div>
 
@@ -50,7 +50,7 @@
         <input type="text" formControlName="city" placeholder="city">
       </div>
 
-      <button class="btn" type="button">Choose capital</button>
+      <button class="btn" type="button" (click)="setCapital()">Set capital</button>
     </div>
 
     <div class="card">
