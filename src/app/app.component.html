@@ -10,10 +10,35 @@
     fontWeight = "bold"
     [dStyles] = "{border: '2px solid #d64161', fontWeight: 'bold', borderRadius: '30px'}"
   >Lorem ipsum dolor sit amet.</p>
+  <button class="btn" (click)="isVisible = !isVisible">toggle</button>
+
+  <!--  appStyle="red" -->
+  <!--    is equivalent to-->
+  <!--  [appStyle]="'red'"-->
+  <!--    but only string-->
+  <!--so, if parameter is String, binding is nor necessary-->
+
+  <hr>
+  <div *ngIf="isVisible" class="wrap">
+    <p> common *ngIf</p>
+  </div>
+  <hr>
+<!--  Previous is OK, but Angular style is: -->
+  <ng-template [ngIf]="isVisible">
+    <div class="wrap">
+      <p>[ngIf] + ng-template</p>
+    </div>
+  </ng-template>
+  <hr>
+<!--  Created structure directive *appIfNot-->
+  <div class="wrap" *appIfnot="!isVisible">
+    <p>created *appIfnot</p>
+  </div>
+  <hr>
+  <ng-template [appIfnot]="!isVisible">
+    <div class="wrap">
+      <p>[appIfnot] + ng-template</p>
+    </div>
+  </ng-template>
 </div>
 
-<!--  appStyle="red" -->
-<!--    is equivalent to-->
-<!--  [appStyle]="'red'"-->
-<!--    but only string-->
-<!--so, if parameter is String, binding is nor necessary-->
