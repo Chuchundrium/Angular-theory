@@ -1,10 +1,12 @@
 <div class="container">
   <h1>Angular Pipes</h1>
   <hr>
-  <p>{{ date | date }}</p>
+  <p>{{ float }}</p>
   <hr>
-  <p>{{ date | date:'fullDate' }}</p>
+  <p>{{ float | currency }}</p>
   <hr>
-  <p>{{ date | date:'dd MMMM yyyy, HH:mm' }}</p>
+  <p>{{ float | percent:'2.1-2' }}</p>
+  <hr>
+  <p>{{ obj | json }}</p>
 </div>
 
