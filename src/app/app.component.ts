@@ -19,4 +19,9 @@ export class AppComponent {
   search = '';
   searchField = 'title';
 
+  addPost() {
+    this.posts.unshift({
+      title: 'new title', text: 'new text'
+    });
+  }
 }
