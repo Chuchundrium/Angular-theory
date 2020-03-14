@@ -6,11 +6,12 @@
     <button class="btn" (click)="appCounterService.increase()">+</button>
     <button class="btn" (click)="appCounterService.decrease()">-</button>
   </div>
-  <hr>
   <div class="card">
     <h2>Local Counter: {{ localCounterService.counter }}</h2>
     <button class="btn" (click)="localCounterService.increase()">+</button>
     <button class="btn" (click)="localCounterService.decrease()">-</button>
   </div>
+  <hr>
+  <app-counter></app-counter>
   </div>
 
