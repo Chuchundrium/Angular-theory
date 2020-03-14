@@ -1,44 +1,5 @@
 <div class="container">
-  <h1>Angular Directives</h1>
-  <p
-    appStyle = "#d64161"
-    fontWeight = "bold"
-    [dStyles] = "{border: '2px solid #6b5b95', fontWeight: 'bold', borderRadius: '10px'}"
-  >Lorem ipsum dolor sit amet.</p>
-  <p
-    appStyle = "#6b5b95"
-    fontWeight = "bold"
-    [dStyles] = "{border: '2px solid #d64161', fontWeight: 'bold', borderRadius: '30px'}"
-  >Lorem ipsum dolor sit amet.</p>
-  <button class="btn" (click)="isVisible = !isVisible">toggle</button>
-
-  <!--  appStyle="red" -->
-  <!--    is equivalent to-->
-  <!--  [appStyle]="'red'"-->
-  <!--    but only string-->
-  <!--so, if parameter is String, binding is nor necessary-->
-
-  <hr>
-  <div *ngIf="isVisible" class="wrap">
-    <p> common *ngIf</p>
-  </div>
-  <hr>
-<!--  Previous is OK, but Angular style is: -->
-  <ng-template [ngIf]="isVisible">
-    <div class="wrap">
-      <p>[ngIf] + ng-template</p>
-    </div>
-  </ng-template>
-  <hr>
-<!--  Created structure directive *appIfNot-->
-  <div class="wrap" *appIfnot="!isVisible">
-    <p>created *appIfnot</p>
-  </div>
-  <hr>
-  <ng-template [appIfnot]="!isVisible">
-    <div class="wrap">
-      <p>[appIfnot] + ng-template</p>
-    </div>
-  </ng-template>
+  <h1>Angular Pipes</h1>
+  <p>{{ e | number:'1.1-5' }}</p>
 </div>
 
