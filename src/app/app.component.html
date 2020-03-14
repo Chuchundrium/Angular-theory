@@ -1,8 +1,10 @@
 <div class="container">
-  <h1>Angular Pipes</h1>
+  <h1>Angular Services</h1>
   <hr>
-  <p>Wait for promise with async ... {{ promise | async }}</p>
-  <p>Wait for observable with async ... {{ date | async | date:'HH:mm:ss dd.MM.yyyy'}}</p>
-  <p>Wait for observable without async ... {{ dateTest | date:'HH:mm:ss'}}</p>
-</div>
+  <div class="card">
+    <h2>App Counter: {{ appCounterService.counter }}</h2>
+    <button class="btn" (click)="appCounterService.increase()">+</button>
+    <button class="btn" (click)="appCounterService.decrease()">-</button>
+  </div>
+  </div>
 

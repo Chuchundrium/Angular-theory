@@ -1,39 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import { Component } from '@angular/core';
+import {AppCounterService} from './services/app-counter.service';
 
-export interface Post {
-  title: string;
-  text: string;
-}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  promise: Promise<string> = new Promise<string>(resolve => {
-    setTimeout(() => {
-      resolve('Promise Resolved');
-    }, 4000);
-  });
+export class AppComponent  {
+  constructor(public appCounterService: AppCounterService) {  }
 
-  date: Observable<Date> = new Observable(obs => {
-    setInterval(() => {
-      obs.next(new Date());
-    }, 1000);
-  });
-
-  dateTest$: Observable<Date> = new Observable(obs => {
-    setInterval(() => {
-      obs.next(new Date());
-    }, 1000);
-  });
-
-  dateTest: Date;
-
-  ngOnInit(): void {
-    this.dateTest$.subscribe(date => {
-      this.dateTest = date;
-    });
-  }
 }
