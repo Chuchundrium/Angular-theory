@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="card">
+  <form class="card" [formGroup]="myForm" (ngSubmit)="submit()">
     <h1>Angular Forms</h1>
 
     <div class="form-control">
@@ -31,19 +31,19 @@
         <input type="text">
       </div>
 
-      <button class="btn">Chose capital</button>
+      <button class="btn" type="button">Choose capital</button>
     </div>
 
     <div class="card">
       <h2>Your skills</h2>
-      <button class="btn">Add skill</button>
+      <button class="btn" type="button">Add skill</button>
       <div class="form-control">
         <label></label>
         <input type="text">
       </div>
     </div>
 
-    <button class="btn">Send</button>
+    <button class="btn" type="submit">Send</button>
 
   </form>
 </div>
