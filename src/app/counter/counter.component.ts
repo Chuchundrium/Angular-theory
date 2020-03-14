@@ -11,5 +11,5 @@ import {LocalCounterService} from '../services/local-counter.service';
 export class CounterComponent {
 
   constructor(public appCounterService: AppCounterService,
-              public localCounterService: LocalCounterService) { }
+              public localCounterService: LocalCounterService) {  }
 }
