@@ -18,7 +18,11 @@ export class AppComponent implements OnInit {
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(5)
-      ])
+      ]),
+      address: new FormGroup({
+        country: new FormControl('il'),
+        city: new FormControl('Haifa', [Validators.required])
+      })
     });
   }
 
