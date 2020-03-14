@@ -5,13 +5,32 @@
     <div class="form-control">
       <label>Email</label>
       <input type="text" placeholder="Email" formControlName="email">
-      <div class="validation"></div>
+      <div class="validation"
+           *ngIf="myForm.get('email').invalid && myForm.get('email').touched"
+      >
+        <small *ngIf="myForm.get('email').errors.required">
+          Email could not be empty.
+        </small>
+        <small *ngIf="myForm.get('email').errors.email">
+          Please, enter the correct email.
+        </small>
+      </div>
     </div>
 
     <div class="form-control">
       <label>Password</label>
       <input type="password" placeholder="Password" formControlName="password">
-      <div class="validation"></div>
+      <div class="validation"
+           *ngIf="myForm.get('password').invalid && myForm.get('password').touched"
+      >
+        <small *ngIf="myForm.get('password').errors.required">
+          Password could not be empty.
+        </small>
+        <small *ngIf="myForm.get('password').errors.minlength">
+          The length of password should not less than {{myForm.get('password').errors.minlength.requiredLength}}.
+          The current length is {{myForm.get('password').errors.minlength.actualLength}}
+        </small>
+      </div>
     </div>
 
     <div class="card">
