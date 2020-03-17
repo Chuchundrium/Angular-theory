@@ -9,10 +9,13 @@
            *ngIf="myForm.get('email').invalid && myForm.get('email').touched"
       >
         <small *ngIf="myForm.get('email').errors.required">
-          Email could not be empty.
+          Email could not be empty ¯\_(ツ)_/¯
         </small>
         <small *ngIf="myForm.get('email').errors.email">
-          Please, enter the correct email.
+          Please, enter the correct email ╮( ˘ ､ ˘ )╭
+        </small>
+        <small *ngIf="myForm.get('email').errors.restrictedEmail">
+          Sorry, but email {{ myForm.get('email').value }} is forbidden :(
         </small>
       </div>
     </div>
@@ -24,7 +27,7 @@
            *ngIf="myForm.get('password').invalid && myForm.get('password').touched"
       >
         <small *ngIf="myForm.get('password').errors.required">
-          Password could not be empty.
+          Password could not be empty ¯\_(ツ)_/¯
         </small>
         <small *ngIf="myForm.get('password').errors.minlength">
           The length of password should not less than {{myForm.get('password').errors.minlength.requiredLength}}.
