@@ -15,7 +15,10 @@
           Please, enter the correct email ╮( ˘ ､ ˘ )╭
         </small>
         <small *ngIf="myForm.get('email').errors.restrictedEmail">
-          Sorry, but email {{ myForm.get('email').value }} is forbidden :(
+          Sorry, but email {{ myForm.get('email').value }} is forbidden ( ¬_¬)
+        </small>
+        <small *ngIf="myForm.get('email').errors.uniqEmail">
+          Sorry, but email {{ myForm.get('email').value }} is already exist ~( ´•︵•` )~
         </small>
       </div>
     </div>
@@ -68,7 +71,7 @@
       </div>
     </div>
 
-    <button class="btn" type="submit" [disabled]="myForm.invalid">Send</button>
+    <button class="btn" type="submit" [disabled]="myForm.invalid || myForm.pending">Send</button>
 
   </form>
 </div>
