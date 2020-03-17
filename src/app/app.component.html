@@ -34,10 +34,10 @@
     </div>
 
     <div class="card" formGroupName="address">
-      <h2>Адрес</h2>
+      <h2>Address</h2>
 
       <div class="form-control">
-        <label>Страна</label>
+        <label>Country</label>
 
         <select formControlName="country">
           <option value="il">Israel</option>
@@ -53,12 +53,15 @@
       <button class="btn" type="button" (click)="setCapital()">Set capital</button>
     </div>
 
-    <div class="card">
+    <div class="card" formGroupName="skills">
       <h2>Your skills</h2>
-      <button class="btn" type="button">Add skill</button>
-      <div class="form-control">
-        <label></label>
-        <input type="text">
+      <button class="btn" type="button" (click)="addSkill()">Add skill</button>
+      <div
+        class="form-control"
+        *ngFor="let control of myForm.get('skills')['controls'] ; let idx = index"
+      >
+        <label>skill {{ idx + 1 }}</label>
+        <input type="text" [formControlName]="idx">
       </div>
     </div>
 
