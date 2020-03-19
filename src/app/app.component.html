@@ -5,9 +5,10 @@
       <input type="text" placeholder="title" [(ngModel)]="todoTitle">
     </div>
     <button class="btn" (click)="addTodo()">Add</button>
-    <button class="btn">Load</button>
+    <button class="btn" (click)="fetchTodos()">Load</button>
   </div>
   <hr>
+<div *ngIf="!loading; else loadingBlock">
   <div class="card" *ngFor="let todo of todos">
     <p>
       <span [class.completed]="todo.completed">{{todo.title | titlecase}}</span>
@@ -18,4 +19,9 @@
       </span>
     </p>
   </div>
+</div>
+
+  <ng-template #loadingBlock>
+    <p>Loading ...</p>
+  </ng-template>
 </div>
