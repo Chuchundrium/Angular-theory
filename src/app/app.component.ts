@@ -51,4 +51,15 @@ export class AppComponent implements OnInit {
         this.loading = false;
       });
   }
+
+  completeTodo(id: number) {
+    console.log('click complete');
+    // this.loading = true;
+    this.todoService.completeTodo(id)
+      .subscribe((todo) => {
+        console.log(todo);
+        this.todos.find(t => t.id === todo.id).completed = true;
+        // this.loading = false;
+      });
+  }
 }
