@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
 import {catchError, delay} from 'rxjs/operators';
@@ -19,16 +19,29 @@ export class TodosService {
       CustomHeader4: '157'
     });
     return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo, {
-      // headers: new HttpHeaders({
-      //   CustomHeader1: Math.random().toString(),
-      //   CustomHeader2: '157'
-      // }),
+      /* headers: new HttpHeaders({
+         CustomHeader1: Math.random().toString(),
+         CustomHeader2: '157'
+       }), */
       headers,
     });
   }
 
+  /* in url: data after ? (ex.: _limit=2) - this is query parameters
+   instead of this:
+                   'params: new HttpParams().set('_limit', '3')'
+   or
+                    let params = new HttpParams() ...
+   */
   fetchTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+    let params = new HttpParams();
+    params = params.append('_limit', '5');
+    params = params.append('custom', 'anything');
+
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos', {
+      // params: new HttpParams().set('_limit', '3')
+      params
+    })
       .pipe(
         delay(500),
         catchError(error => {
