@@ -1,14 +1,18 @@
 <nav class="navbar">
   <h1>
-    <a [routerLink]=['/']>Angular Routing</a>
+    <a [routerLink]="['/']">Angular Routing</a>
   </h1>
   <ul>
-    <li class="active">
-      <a [routerLink]=['/']>Home</a>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a [routerLink]="['/']">Home</a>
     </li>
-<!--    routerLink is directive  -->
-    <li><a routerLink="/posts">Posts</a></li>
-    <li><a [routerLink]=['/about']>About</a></li>
+<!--    routerLink, routerLinkActive are directives  -->
+    <li routerLinkActive="active">
+      <a routerLink="/posts">Posts</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/about']">About</a>
+    </li>
     <li><button class="btn">Login</button></li>
     <li><button class="btn">Logout</button></li>
   </ul>
