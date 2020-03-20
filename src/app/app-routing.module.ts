@@ -11,6 +11,8 @@ import { AboutExtraPageComponent } from './about-page/about-extra-page/about-ext
       ]},
     {path: '', component: HomePageComponent, pathMatch: 'full'}
   ])],
+
+  // export to 'public' api. All methods are private by default
   exports: [RouterModule],
 })
 

@@ -11,6 +11,7 @@ import { PageNamePipe } from './shared/page-name.pipe';
 import { AboutExtraPageComponent } from './about-page/about-extra-page/about-extra-page.component';
 
 @NgModule({
+  // for registration of: Components, Directives, Pipes
   declarations: [
     AppComponent,
     ColorDirective,
@@ -19,12 +20,24 @@ import { AboutExtraPageComponent } from './about-page/about-extra-page/about-ext
     PageNamePipe,
     AboutExtraPageComponent
   ],
+
+  // for other Modules
   imports: [
+
+    // for Angular working in browsers + other base useful things
     BrowserModule,
+
+    // for working with ngModel, ngForms, etc.
     FormsModule,
+
+    // own Modules
     AppRoutingModule
   ],
+
+  // for Services
   providers: [],
+
+  // for main Component in app
   bootstrap: [AppComponent]
 })
 export class AppModule { }
