@@ -11,7 +11,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
-  color: #622569;
+  color: #333;
 }
 
 .container {
@@ -25,7 +25,7 @@ a {
 }
 
 a:hover {
-  color: #832e8a;
+  color: #666;
 }
 
 ul {
@@ -38,7 +38,7 @@ img {
 
 .btn {
   display: inline-block;
-  background: #622569;
+  background: #333333;
   color: #fff;
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
@@ -50,7 +50,7 @@ img {
 
   &:disabled {
     background: #ccc;
-    color: #36173c;
+    color: #000;
     cursor: not-allowed;
   }
 
@@ -60,7 +60,7 @@ img {
 }
 
 .btn.btn-danger {
-  background: #e06377;
+  background: #c94c4c;
   color: #fff;
 }
 
@@ -100,6 +100,11 @@ img {
   }
 }
 
+a {
+  text-decoration: none;
+  color: #333;
+}
+
 input,
 select,
 textarea {
@@ -113,4 +118,33 @@ textarea {
 
 hr {
   margin: .5rem 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  z-index: 1;
+  width: 100%;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+  background: #86af49;
+  color: #fff;
+
+  ul {
+    display: flex;
+
+    li.active a {
+      font-weight: bold;
+      color: #333333;
+      cursor: default;
+    }
+  }
+
+  a {
+    color: #fff;
+    padding: 0.45rem;
+    margin: 0 0.25rem;
+  }
 }
