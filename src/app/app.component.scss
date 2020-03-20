@@ -1,3 +1,7 @@
 p {
   font-size: 1.5rem;
+  &.error {
+    color: #c83349;
+    font-size: 1.2rem;
+  }
 }

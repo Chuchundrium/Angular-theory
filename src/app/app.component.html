@@ -8,13 +8,20 @@
     <button class="btn" (click)="fetchTodos()">Load</button>
   </div>
   <hr>
-<div *ngIf="!loading; else loadingBlock">
-  <div *ngIf="todos.length; else noTodosBlock">
-    <div class="card" *ngFor="let todo of todos">
-      <p>
-        <span [class.completed]="todo.completed">{{todo.title | titlecase}}</span>
-        <br>
-        <span>
+
+  <p
+    *ngIf="error; else todosBlock"
+    class="error"
+  >{{ error }}</p>
+
+<ng-template #todosBlock>
+  <div *ngIf="!loading; else loadingBlock">
+    <div *ngIf="todos.length; else noTodosBlock">
+      <div class="card" *ngFor="let todo of todos">
+        <p>
+          <span [class.completed]="todo.completed">{{todo.title | titlecase}}</span>
+          <br>
+          <span>
         <button
           class="btn btn-danger"
           (click)="removeTodo(todo.id)"
@@ -25,15 +32,16 @@
           (click)="completeTodo(todo.id)"
         >Complete</button>
       </span>
-      </p>
+        </p>
+      </div>
     </div>
+    <ng-template #noTodosBlock>
+      <p>no elements ...</p>
+    </ng-template>
   </div>
-  <ng-template #noTodosBlock>
-    <p>no elements ...</p>
-  </ng-template>
-</div>
 
   <ng-template #loadingBlock>
     <p>Loading ...</p>
   </ng-template>
+</ng-template>
 </div>
