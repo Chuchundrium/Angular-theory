@@ -1,43 +1,19 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {AboutComponent} from './about/about.component';
-import {PostsComponent} from './posts/posts.component';
-import {PostComponent} from './post/post.component';
-import {AboutExtraComponent} from './about-extra/about-extra.component';
-import {ErrorPageComponent} from './error-page/error-page.component';
-import {AuthGuard} from './auth.guard';
-import {PostResolver} from './post.resolver';
-
-// http://localhost:4200/ -> HomeComponent
-// http://localhost:4200/about -> AboutComponent
-// http://localhost:4200/posts -> PostsComponent
-// http://localhost:4200/about/extra -> AboutExtraComponent
-
-const routes: Routes = [
-  {path: '', component: HomeComponent}, // !!! NB: don't use path with '/' here
-  {path: 'about', component: AboutComponent, canActivateChild: [AuthGuard], children: [
-      {path: 'extra', component: AboutExtraComponent}
-    ]},
-  {path: 'posts', component: PostsComponent, canActivate: [AuthGuard]},
-  {
-    path: 'posts/:id', // dynamic routing
-    component: PostComponent,
-    resolve: {
-      post: PostResolver
-    }
-  },
-  {path: 'error', component: ErrorPageComponent},
-  {path: '**', redirectTo: '/error'} // !!! always in the END of routes list
-];
+import {AboutPageComponent} from './about-page/about-page.component';
+import {HomePageComponent} from './home-page/home-page.component';
+import { AboutExtraPageComponent } from './about-page/about-extra-page/about-extra-page.component';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)], // for array routes registration
+  imports: [RouterModule.forRoot([
+    {path: 'about', component: AboutPageComponent, children: [
+        {path: 'extra', component: AboutExtraPageComponent}
+      ]},
+    {path: '', component: HomePageComponent, pathMatch: 'full'}
+  ])],
   exports: [RouterModule],
 })
 
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule {}
 
 
