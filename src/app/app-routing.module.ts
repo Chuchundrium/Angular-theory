@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {PostsComponent} from './posts/posts.component';
+import {PostComponent} from './post/post.component';
 
 // http://localhost:4200/ -> HomeComponent
 // http://localhost:4200/about -> AboutComponent
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path: '', component: HomeComponent}, // !!! NB: don't use path with '/' here
   {path: 'about', component: AboutComponent},
   {path: 'posts', component: PostsComponent},
+  // dynamic routing
+  {path: 'posts/:id', component: PostComponent},
 ];
 
 @NgModule({
