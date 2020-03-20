@@ -4,14 +4,18 @@ import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {PostsComponent} from './posts/posts.component';
 import {PostComponent} from './post/post.component';
+import {AboutExtraComponent} from './about-extra/about-extra.component';
 
 // http://localhost:4200/ -> HomeComponent
 // http://localhost:4200/about -> AboutComponent
 // http://localhost:4200/posts -> PostsComponent
+// http://localhost:4200/about/extra -> AboutExtraComponent
 
 const routes: Routes = [
   {path: '', component: HomeComponent}, // !!! NB: don't use path with '/' here
-  {path: 'about', component: AboutComponent},
+  {path: 'about', component: AboutComponent, children: [
+      {path: 'extra', component: AboutExtraComponent}
+    ]},
   {path: 'posts', component: PostsComponent},
   // dynamic routing
   {path: 'posts/:id', component: PostComponent},
