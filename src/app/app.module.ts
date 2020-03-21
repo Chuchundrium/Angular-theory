@@ -4,21 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { ColorDirective } from './shared/color.directive';
-import { AboutPageComponent } from './about-page/about-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { PageNamePipe } from './shared/page-name.pipe';
-import { AboutExtraPageComponent } from './about-page/about-extra-page/about-extra-page.component';
+import {AboutPageModule} from './about-page/about-page.module';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   // for registration of: Components, Directives, Pipes
   declarations: [
     AppComponent,
-    ColorDirective,
-    AboutPageComponent,
-    HomePageComponent,
-    PageNamePipe,
-    AboutExtraPageComponent
+    HomePageComponent
   ],
 
   // for other Modules
@@ -31,7 +25,9 @@ import { AboutExtraPageComponent } from './about-page/about-extra-page/about-ext
     FormsModule,
 
     // own Modules
-    AppRoutingModule
+    AppRoutingModule,
+    AboutPageModule,
+    SharedModule
   ],
 
   // for Services
