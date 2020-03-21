@@ -6,7 +6,10 @@ import {HomePageComponent} from './home-page/home-page.component';
   imports: [RouterModule.forRoot([
     {path: '', component: HomePageComponent, pathMatch: 'full'},
     // for lazy loading:
-    {path: 'about', loadChildren: './about-page/about-page.module#AboutPageModule'}
+    // {path: 'about', loadChildren: './about-page/about-page.module#AboutPageModule'}
+    // or:
+    {path: 'about', loadChildren: () => import('./about-page/about-page.module')
+        .then(module => module.AboutPageModule)}
   ])],
   exports: [RouterModule],
 })
