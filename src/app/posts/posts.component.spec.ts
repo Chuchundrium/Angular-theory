@@ -36,4 +36,18 @@ describe('PostComponent', () => {
     component.add('Post test title');
     expect(component.message).toBe(error);
   });
+  it('should remove post if user confirms', () => {
+    const testId = 10;
+    const spy = spyOn(service, 'remove').and.returnValue(EMPTY);
+    spyOn(window, 'confirm').and.returnValue(true);
+    component.delete(testId);
+    expect(spy).toHaveBeenCalledWith(testId);
+  });
+  it('should NOT remove post if user does not confirm', () => {
+    const testId = 10;
+    const spy = spyOn(service, 'remove').and.returnValue(EMPTY);
+    spyOn(window, 'confirm').and.returnValue(false);
+    component.delete(testId);
+    expect(spy).not.toHaveBeenCalled();
+  });
 });
