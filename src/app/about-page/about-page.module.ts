@@ -14,7 +14,9 @@ import {RouterModule} from '@angular/router';
     SharedModule,
     CommonModule,
     RouterModule.forChild([
-      {path: 'about', component: AboutPageComponent, children: [
+      // {path: 'about', component: AboutPageComponent, children: [
+      // for lazy loading:
+      {path: '', component: AboutPageComponent, children: [
           {path: 'extra', component: AboutExtraPageComponent}
         ]},
     ])

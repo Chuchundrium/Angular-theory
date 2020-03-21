@@ -4,10 +4,10 @@ import {HomePageComponent} from './home-page/home-page.component';
 
 @NgModule({
   imports: [RouterModule.forRoot([
-    {path: '', component: HomePageComponent, pathMatch: 'full'}
+    {path: '', component: HomePageComponent, pathMatch: 'full'},
+    // for lazy loading:
+    {path: 'about', loadChildren: './about-page/about-page.module#AboutPageModule'}
   ])],
-
-  // export to 'public' api. All methods are private by default
   exports: [RouterModule],
 })
 
