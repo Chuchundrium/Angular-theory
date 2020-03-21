@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(private resolver: ComponentFactoryResolver,
               private title: Title,
               private meta: Meta) {
-    // title.getTitle();
+
     title.setTitle('App Component Page');
     meta.addTags([
       {name: 'keywords', content: 'angular,appcomponent,tags'},
