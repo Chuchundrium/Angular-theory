@@ -1,32 +1,23 @@
 import {CounterComponent} from './counter.component';
-import {FormBuilder} from '@angular/forms';
-let component: CounterComponent;
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 describe('CounterComponent', () => {
+  let component: CounterComponent;
+  let fixture: ComponentFixture<CounterComponent>;
   beforeEach(() => {
-    component = new CounterComponent(new FormBuilder());
+    TestBed.configureTestingModule({
+      declarations: [CounterComponent]
+    });
+    fixture = TestBed.createComponent(CounterComponent);
+    component = fixture.componentInstance;
+    /* useful:
+    fixture.debugElement
+    fixture.nativeElement
+     */
   });
-  it('should increment counter by 1', () => {
-    component.increment();
-    expect(component.counter).toBe(1);
+  it('should be created', () => {
+    expect(component).toBeDefined();
   });
-  it('should decrement counter by 1', () => {
-    component.decrement();
-    expect(component.counter).toBe(-1);
-  });
-  it('should increment value by event emitter', () => {
-    let result = null;
-    component.counterEmitter.subscribe(value => result = value);
-    component.increment();
-    expect(result).toBe(1);
-  });
-  it('should create form with two controls', () => {
-    expect(component.form.contains('login')).toBeTruthy();
-    expect(component.form.contains('email')).toBeTruthy();
-  });
-  it('should mark login as invalid if empty value', () => {
-    const control = component.form.get('login');
-    control.setValue('');
-    expect(control.valid).toBeFalsy();
-  });
+
+
 });
