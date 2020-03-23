@@ -12,7 +12,11 @@ export class PostsComponent implements OnInit {
   constructor(private service: PostsService) {}
 
   ngOnInit(): void {
-    this.service.fetch().subscribe(p => {
+    // this.service.fetch().subscribe(p => {
+    //   this.posts = p;
+    // });
+    this.service.fetchPromise().then(p => {
+      console.log('COMPONENT: fetchPromise CALLED');
       this.posts = p;
     });
   }
