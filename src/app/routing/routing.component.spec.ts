@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RoutingComponent } from './routing.component';
-import {Observable} from 'rxjs';
+import { Subject } from 'rxjs';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
 /* mock classes for Router and ActivatedRoute tests: */
@@ -8,7 +8,14 @@ class RouterStub {
   navigate(path: string[]) {}
 }
 class ActivatedRouteStub {
-  params: Observable<Params>;
+  // params: Observable<Params>;
+  private subject = new Subject<Params>();
+  push(params: Params) {
+    this.subject.next(params);
+  }
+  get params() {
+    return this.subject.asObservable();
+  }
 }
 
 describe('RoutingComponent', () => {
@@ -26,6 +33,7 @@ describe('RoutingComponent', () => {
     });
     fixture = TestBed.createComponent(RoutingComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
   it('should be defined', () => {
     expect(component).toBeDefined();
@@ -35,5 +43,14 @@ describe('RoutingComponent', () => {
     const spy = spyOn(router, 'navigate');
     component.goBack();
     expect(spy).toHaveBeenCalledWith(['/posts']);
+  });
+  it('should navigate to 404 if id = 0', () => {
+    const router: RouterStub = TestBed.get(Router);
+    const route: ActivatedRouteStub = TestBed.get(ActivatedRoute);
+    const spy = spyOn(router, 'navigate');
+
+    route.push({id: 0});
+
+    expect(spy).toHaveBeenCalledWith(['/404']);
   });
 });
