@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, group, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -38,10 +38,17 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       ]),
       transition(':leave', [
         style({opacity: 1}),
-        animate(500, style({
-          opacity: 0,
-          transform: 'scale(1.3)'
-        }))
+        /* sequence used by default instead of group */
+        group([
+          animate(800, style({
+            opacity: 0,
+            transform: 'scale(1.3)'
+          })),
+          animate(300, style({
+            color: '#1d1d1d',
+            fontWeight: 'bold'
+          }))
+        ])
       ])
     ])
   ]
