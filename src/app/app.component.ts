@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {animate, group, state, style, transition, trigger} from '@angular/animations';
+import {animate, group, query, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -22,23 +22,23 @@ import {animate, group, state, style, transition, trigger} from '@angular/animat
       transition('start => end', animate(450)),
       transition('end => start', animate('800ms ease-in-out')),
       transition('special <=> *', [
-        style({ background: '#99b433' }),
-        animate('1s', style({
-          background: '#7e3878'
-        })),
-        animate(750)
+        group([
+          query('h4', animate(1500, style({
+            fontSize: '.5rem'
+          }))),
+          style({ background: '#99b433' }),
+          animate('1s', style({
+            background: '#7e3878'
+          })),
+          animate(750)
+        ])
       ]),
-      /* void - is reserved for NO-state
-      * 'void => *' = ':enter'
-      * '* => void' = ':leave'
-      * */
       transition(':enter', [
         style({opacity: 0}),
         animate('777ms ease-out')
       ]),
       transition(':leave', [
         style({opacity: 1}),
-        /* sequence used by default instead of group */
         group([
           animate(800, style({
             opacity: 0,
