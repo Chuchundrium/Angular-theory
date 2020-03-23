@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {state, style, trigger} from '@angular/animations';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,9 @@ import {state, style, trigger} from '@angular/animations';
       state('end', style({
         background: '#da532c',
         transform: 'scale(1.2)'
-      }))
+      })),
+      transition('start => end', animate(450)),
+      transition('end => start', animate('800ms ease-in-out'))
     ])
   ]
 })
