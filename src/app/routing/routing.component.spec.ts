@@ -1,12 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RoutingComponent } from './routing.component';
 import { Subject } from 'rxjs';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Params, Router, RouterOutlet} from '@angular/router';
+import {By} from '@angular/platform-browser';
+import {RouterTestingModule} from '@angular/router/testing';
 
-/* mock classes for Router and ActivatedRoute tests: */
+/* mock class for Router tests: */
 class RouterStub {
   navigate(path: string[]) {}
 }
+/* mock class for ActivatedRoute tests: */
 class ActivatedRouteStub {
   // params: Observable<Params>;
   private subject = new Subject<Params>();
@@ -25,6 +28,7 @@ describe('RoutingComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ RoutingComponent ],
+      imports: [ RouterTestingModule ],
       providers: [
         /* for using mock class */
         { provide: Router, useClass: RouterStub },
@@ -52,5 +56,9 @@ describe('RoutingComponent', () => {
     route.push({id: 0});
 
     expect(spy).toHaveBeenCalledWith(['/404']);
+  });
+  it('should have router-outlet directive', () => {
+    const de = fixture.debugElement.query(By.directive(RouterOutlet));
+    expect(de).not.toBeNull();
   });
 });
