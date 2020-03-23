@@ -12,8 +12,8 @@ export class PostsComponent implements OnInit {
   constructor(private service: PostsService) {}
 
   ngOnInit(): void {
-    this.service.fetch().subscribe(posts => {
-      this.posts = posts;
+    this.service.fetch().subscribe(p => {
+      this.posts = p;
     });
   }
 
