@@ -1,10 +1,11 @@
 <div class="wrap">
   <button (click)="animate()">Animate</button>
+  <button (click)="boxState='special'">Special State</button>
   <hr>
   <div
     class="box"
     [@box]="boxState"
   >
-    {{ boxState | uppercase}}
+    <h4>{{ boxState | uppercase}}</h4>
   </div>
 </div>
