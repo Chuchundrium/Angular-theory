@@ -1,17 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RoutingComponent } from './routing.component';
 import { Subject } from 'rxjs';
-import {ActivatedRoute, Params, Router, RouterOutlet} from '@angular/router';
-import {By} from '@angular/platform-browser';
-import {RouterTestingModule} from '@angular/router/testing';
+import { ActivatedRoute, Params, Router, RouterOutlet } from '@angular/router';
+import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
-/* mock class for Router tests: */
 class RouterStub {
   navigate(path: string[]) {}
 }
-/* mock class for ActivatedRoute tests: */
 class ActivatedRouteStub {
-  // params: Observable<Params>;
   private subject = new Subject<Params>();
   push(params: Params) {
     this.subject.next(params);
@@ -30,10 +28,11 @@ describe('RoutingComponent', () => {
       declarations: [ RoutingComponent ],
       imports: [ RouterTestingModule ],
       providers: [
-        /* for using mock class */
         { provide: Router, useClass: RouterStub },
         { provide: ActivatedRoute, useClass: ActivatedRouteStub }
-      ]
+      ],
+      /* for ignoring template components we not testing */
+      schemas: [ NO_ERRORS_SCHEMA ]
     });
     fixture = TestBed.createComponent(RoutingComponent);
     component = fixture.componentInstance;
