@@ -14,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router /* for redirect */
   ) { }
 
@@ -48,7 +48,9 @@ export class LoginPageComponent implements OnInit {
     ** password: testtest */
     this.auth.login(user).subscribe(() => {
       this.form.reset();
-      this.router.navigate(['/admin', 'dashboard']).then();
+      this.router.navigate(['/admin', 'dashboard']);
+      this.submitted = false;
+    }, () => {
       this.submitted = false;
     });
   }
