@@ -12,7 +12,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 export class LoginPageComponent implements OnInit {
   form: FormGroup;
   submitted = false;
-  needLoginMessage: string;
+  message: string;
 
   constructor(public auth: AuthService,
               private router: Router, /* for redirect */
@@ -21,7 +21,9 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
       if (params.needLogin) {
-        this.needLoginMessage = 'Please, fill email and password fields';
+        this.message = 'Please, fill email and password fields.';
+      } else if (params.authFailed) {
+        this.message = 'Session is finished. Please, login again.';
       }
     });
     this.form = new FormGroup({
