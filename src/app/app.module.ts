@@ -3,6 +3,7 @@ import { NgModule, Provider } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import heLocale from '@angular/common/locales/he';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
@@ -12,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PostComponent } from './shared/components/post/post.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './shared/auth-interceptor.service';
+import { environment } from '../environments/environment';
 
 registerLocaleData(heLocale, 'he');
 
@@ -32,7 +34,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
