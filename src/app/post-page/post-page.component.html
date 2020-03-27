@@ -1,19 +1,21 @@
-<div class="post">
-  <div class="header">
-    <h1>Post title</h1>
-    <button
-      routerLink="/"
-      class="btn btn-link"
-    >Go home</button>
-  </div>
-  <div class="info">
-    <strong>Here will be author name...</strong>
-    <small>24.03.2020</small>
-  </div>
-  <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium ad aliquam aliquid aperiam at aut consectetur debitis deserunt dolor earum hic itaque labore magnam molestiae non pariatur possimus quas quibusdam quisquam quos rem saepe similique, soluta ut vero voluptatibus. Accusamus doloribus eaque odio provident sed similique unde voluptatem voluptatibus.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium ad aliquam aliquid aperiam at aut consectetur debitis deserunt dolor earum hic itaque labore magnam molestiae non pariatur possimus quas quibusdam quisquam quos rem saepe similique, soluta ut vero voluptatibus. Accusamus doloribus eaque odio provident sed similique unde voluptatem voluptatibus.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium ad aliquam aliquid aperiam at aut consectetur debitis deserunt dolor earum hic itaque labore magnam molestiae non pariatur possimus quas quibusdam quisquam quos rem saepe similique, soluta ut vero voluptatibus. Accusamus doloribus eaque odio provident sed similique unde voluptatem voluptatibus.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium ad aliquam aliquid aperiam at aut consectetur debitis deserunt dolor earum hic itaque labore magnam molestiae non pariatur possimus quas quibusdam quisquam quos rem saepe similique, soluta ut vero voluptatibus. Accusamus doloribus eaque odio provident sed similique unde voluptatem voluptatibus.</p>
+<div *ngIf="post$ | async as post; else loading">
+  <div class="post">
+    <div class="header">
+      <h1>{{ post.title }}</h1>
+      <button
+        routerLink="/"
+        class="btn btn-link"
+      >Go home</button>
+    </div>
+    <div class="info">
+      <strong>{{ post.author }}</strong>
+      <small>{{ post.date | date:'medium':null:'he' }}</small>
+    </div>
+    <div>
+      <quill-view-html [content]="post.text"></quill-view-html>
+    </div>
   </div>
 </div>
+<ng-template #loading>
+  <p class="text-center">Loading ...</p>
+</ng-template>
